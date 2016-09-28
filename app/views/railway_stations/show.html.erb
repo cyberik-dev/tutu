@@ -5,11 +5,13 @@
   <%= @railway_station.title %>
 
   <br><strong>Поезда на станции:</strong>
-  <ol>
+  <% if @railway_station.trains.empty? %>
+    На станции нет поездов
+  <% else %>
     <% @railway_station.trains.each do |train| %>
-      <li><%= train.number %></li>
+      <%= train.number %>, 
     <% end %>
-  </ol>  
+  <% end %>
 </p>
 
 <% if @railway_station.routes.empty? %>
