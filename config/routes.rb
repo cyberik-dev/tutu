@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
 
+  # единственный ресурс
+  resource :search, only: [:new, :show, :edit, :create]
+
   resources :railway_stations do
     patch :update_position, on: :member
   end
-  resources :trains
+
+  # опция shallow: true указывет, что родитель нужен только в index, create, new 
+  resources :trains do
+    resources :carriages, shallow: true
+  end
   resources :routes
 
   get 'welcome/index'
