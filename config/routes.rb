@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
 
   # единственный ресурс
   resource :search, only: [:new, :show, :edit, :create]
