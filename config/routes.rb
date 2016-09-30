@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # единственный ресурс
   resource :search, only: [:new, :show, :edit, :create]
-
+  
   resources :railway_stations do
     patch :update_position, on: :member
   end
