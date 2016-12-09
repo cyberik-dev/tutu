@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'searches/show'
+
   devise_for :users
+
+  resources :tickets, only: [:create, :show]
 
   # единственный ресурс
   resource :search, only: [:new, :show, :edit, :create]
