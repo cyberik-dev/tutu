@@ -1,4 +1,4 @@
-class TrainsController < ApplicationController
+class Admin::TrainsController < Admin::BaseController
 
   before_action :set_train, only: [:show, :edit, :update, :destroy]
 
@@ -17,7 +17,7 @@ class TrainsController < ApplicationController
     @train = Train.new(train_params)
     
     if @train.save
-      redirect_to @train
+      redirect_to [:admin, @train]
     else
       render :new
     end
@@ -28,7 +28,7 @@ class TrainsController < ApplicationController
 
   def update
     if @train.update(train_params)
-      redirect_to @train
+      redirect_to [:admin, @train]
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class TrainsController < ApplicationController
 
   def destroy
     @train.destroy
-    redirect_to trains_path
+    redirect_to admin_trains_path
   end
 
   private
